@@ -3,7 +3,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/github_username/repo_name">
+  <a href="https://lab.skynetinc.tech/WorldDrknss">
     <img src="images/almalinux.jpg" alt="Logo">
   </a>
 
@@ -13,9 +13,9 @@
     Gettings started with AlmaLinux
     <br />
     <br />
-    <a href="https://labs.xtechnology.org/cshowalter/SkyNet/issues">Report Bug</a>
+    <a href="https://lab.skynetinc.tech/WorldDrknss/Guide-to-AlmaLinux/issues">Report Bug</a>
     ·
-    <a href="https://labs.xtechnology.org/cshowalter/SkyNet/issues">Request Feature</a>
+    <a href="https://lab.skynetinc.tech/WorldDrknss/Guide-to-AlmaLinux/issues">Request Feature</a>
   </p>
 </div>
 
@@ -214,7 +214,7 @@ Instagram - [@skynetinc.tech](https://twitter.com/skynetinc.tech)
 
 Facebook - [@skynetinctech](https://facebook.com/skynetinctech)
 
-Project Link: [https://labs.xtechnology.org/cshowalter/SkyNet/](https://labs.xtechnology.org/cshowalter/SkyNet/)
+Project Link: [https://lab.skynetinc.tech/WorldDrknss/Guide-to-AlmaLinux/](https://lab.skynetinc.tech/WorldDrknss/Guide-to-AlmaLinux/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
