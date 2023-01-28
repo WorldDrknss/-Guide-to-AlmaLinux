@@ -133,7 +133,7 @@ This is an example of how to list things you need to use the software and how to
 
       More details and information about AlmaLinux Live Media can be found on Live Media SIG.
 
-### Installation
+## Installation
 Coming Soons
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -141,7 +141,7 @@ Coming Soons
 <!-- HARDENING -->
 ## Hardening
 
-  ## Creating a SSH Key
+  ### Creating a SSH Key
   **Windows:**
 
   1. Open the Settings panel, then click Apps.
