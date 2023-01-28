@@ -121,11 +121,11 @@ This is an example of how to list things you need to use the software and how to
 
         `dd` : Start the dd command to write DVD/CD iso image. `if=AlmaLinux-8-x86_64-Live-GNOME-Mini-beta-1.iso` : path to the input file. `of=/dev/sdc` : path to destination USB disk/stick. status=progress: display a progress bar while writing the image to the USB stick such as `/dev/sdb`. That’s all! You now have ready Live AlmaLinux on a USB stick.
     
-  * **Windows**:
+  * **Windows:**
         
-        For Windows OS there is a helpful free and open-source application - Rufus.
+      For Windows OS there is a helpful free and open-source application - Rufus.
 
-        Open the application, choose your target USB, ISO you need to burn, press start - and Live OS is ready to run.
+      Open the application, choose your target USB, ISO you need to burn, press start - and Live OS is ready to run.
 
   * **MacOS:**
       
@@ -158,7 +158,7 @@ Coming Soons
       * Press the Windows key.
       * Type `cmd`.
       * Under *Best Match*, right-click Command Prompt.
-      * Click Run as Administrator
+      * Click `Run as administrator`
       
       ![Command Prompt](images/ssh/windows-step4.png)
 
