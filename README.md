@@ -95,43 +95,43 @@ To get a local copy up and running follow these simple example steps.
 
 This is an example of how to list things you need to use the software and how to install them.
 
-Downloading AlmaLinux
-  ```sh
-  https://almalinux.org
-  ```
+1. Downloading AlmaLinux
+    ```sh
+    https://almalinux.org
+    ```
 
-Make bootable USB
-1. **Linux:**
+2. Make bootable USB
+  * **Linux:**
 
-    Insert your target USB and locate it. There are different ways to do it but here are some of them:
+      Insert your target USB and locate it. There are different ways to do it but here are some of them:
 
-    * `sudo fdisk -l` - this command shows you the connected block storage devices, including the USB devices.
+      * `sudo fdisk -l` - this command shows you the connected block storage devices, including the USB devices.
 
-    * `lsblk` - this command gives you all the available block storage devices, including the USB block storage devices.
+      * `lsblk` - this command gives you all the available block storage devices, including the USB block storage devices.
 
-    * `sudo blkid` - this command gives you the same information as lsblk, but you have to rub it as root.
-      
-      You need to look for /dev/sda or /dev/sdb or /dev/sdc, which is your target USB.
-
-      After you found out the location of your target USB, navigate to the location of your source ISO. Run dd command to copy files from ISO to USB:
+      * `sudo blkid` - this command gives you the same information as lsblk, but you have to rub it as root.
         
-      ```sh
-      sudo dd if=/AlmaLinux-9-latest-x86_64-dvd.iso of=/dev/sdc status=progress
-      ```
+        You need to look for /dev/sda or /dev/sdb or /dev/sdc, which is your target USB.
 
-      `dd` : Start the dd command to write DVD/CD iso image. `if=AlmaLinux-8-x86_64-Live-GNOME-Mini-beta-1.iso` : path to the input file. `of=/dev/sdc` : path to destination USB disk/stick. status=progress: display a progress bar while writing the image to the USB stick such as `/dev/sdb`. That’s all! You now have ready Live AlmaLinux on a USB stick.
-  
-2. **Windows**:
-      
-      For Windows OS there is a helpful free and open-source application - Rufus.
+        After you found out the location of your target USB, navigate to the location of your source ISO. Run dd command to copy files from ISO to USB:
+          
+        ```sh
+        sudo dd if=/AlmaLinux-9-latest-x86_64-dvd.iso of=/dev/sdc status=progress
+        ```
 
-      Open the application, choose your target USB, ISO you need to burn, press start - and Live OS is ready to run.
-
-3. **MacOS:**
+        `dd` : Start the dd command to write DVD/CD iso image. `if=AlmaLinux-8-x86_64-Live-GNOME-Mini-beta-1.iso` : path to the input file. `of=/dev/sdc` : path to destination USB disk/stick. status=progress: display a progress bar while writing the image to the USB stick such as `/dev/sdb`. That’s all! You now have ready Live AlmaLinux on a USB stick.
     
-    The cross-platform tool balenaEtcher is used to write images on macOS. It is simple too. Open banlenaEtcher, choose the image and the USB, press Flash.
+  * **Windows**:
+        
+        For Windows OS there is a helpful free and open-source application - Rufus.
 
-    More details and information about AlmaLinux Live Media can be found on Live Media SIG.
+        Open the application, choose your target USB, ISO you need to burn, press start - and Live OS is ready to run.
+
+  * **MacOS:**
+      
+      The cross-platform tool balenaEtcher is used to write images on macOS. It is simple too. Open banlenaEtcher, choose the image and the USB, press Flash.
+
+      More details and information about AlmaLinux Live Media can be found on Live Media SIG.
 
 ### Installation
 Coming Soons
@@ -141,8 +141,40 @@ Coming Soons
 <!-- HARDENING -->
 ## Hardening
 
-## Creating Private/Public SSH Key
+## Creating a SSH Key
 **Windows:**
+
+1. Open the Settings panel, then click Apps.
+2. Under the Apps and Features heading, click Optional Features.<br>
+![Settings](images/ssh/windows-step1-2.png)
+
+3. Scroll down the list to see if OpenSSH Client is listed.<br>
+![Optional Features](images/ssh/windows-step3.png)
+    * If it’s not, click the plus-sign next to Add a feature. <br>
+    * Scroll through the list to find and select OpenSSH Client.<br>
+    * Finally, click Install.
+
+4. Open Command Prompt.<br>
+![Command Prompt](images/ssh/windows-step4.png)
+    1) Press the Windows key.
+    2) Type `cmd`.
+    3) Under *Best Match*, right-click Command Prompt.
+    4) Click Run as Administrator
+
+5. If prompted, click **Yes** in the *Do you want to allow this app to make changes to your device?* pop-up.
+
+6. Use OpenSSH to Generate an SSH Key Pair
+    1) In the command prompt, type the following:
+        ```sh
+        ssh-keygen
+        ```
+        ![SSH](images/ssh/windows-step6.png)
+    2) By default, the system will save the keys to C:\Users\your_username/.ssh/id_rsa. You can use the default name, or you can choose more descriptive names. This can help distinguish between keys, if you are using multiple key pairs. To stick to the default option, press Enter.
+    3) You’ll be asked to enter a passphrase. Hit Enter to skip this step.
+    4) The system will generate the key pair, and display the key fingerprint and a randomart image.
+    5) Open your file browser.
+    6) Navigate to C:\Users\your_username/.ssh.
+    7) You should see two files. The identification is saved in the id_rsa file and the public key is labeled id_rsa.pub. This is your SSH key pair.
 
 **Linux:**
 
