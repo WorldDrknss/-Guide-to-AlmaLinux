@@ -181,13 +181,6 @@ Coming Soons
 
   **MacOS:**
 
-  ### Adding SSH Public Key
-  Replace $SSH with the content of the public key.
-  ```sh
-  echo "$SSH" >> ~/.ssh/authorized_keys
-  ```
-  <p align="right">(<a href="#top">back to top</a>)</p>
-  
   ### SSH Permissions
   ```sh
   mkdir -p ~/.ssh
@@ -196,6 +189,13 @@ Coming Soons
   chmod 600 ~/.ssh/authorized_keys
   ```
 
+  <p align="right">(<a href="#top">back to top</a>)</p>
+  
+  ### Adding SSH Public Key
+  Replace $SSH with the content of the public key.
+  ```sh
+  echo "$SSH" >> ~/.ssh/authorized_keys
+  ```
   <p align="right">(<a href="#top">back to top</a>)</p>
   
   ### Disabling password based SSH
