@@ -141,111 +141,112 @@ Coming Soons
 <!-- HARDENING -->
 ## Hardening
 
-## Creating a SSH Key
-**Windows:**
+  ## Creating a SSH Key
+  **Windows:**
 
-1. Open the Settings panel, then click Apps.
-2. Under the Apps and Features heading, click Optional Features.<br>
-![Settings](images/ssh/windows-step1-2.png)
+  1. Open the Settings panel, then click Apps.
+  2. Under the Apps and Features heading, click Optional Features.<br>
+  ![Settings](images/ssh/windows-step1-2.png)
 
-3. Scroll down the list to see if OpenSSH Client is listed.<br>
-![Optional Features](images/ssh/windows-step3.png)
-    * If it’s not, click the plus-sign next to Add a feature. <br>
-    * Scroll through the list to find and select OpenSSH Client.<br>
-    * Finally, click Install.
+  3. Scroll down the list to see if OpenSSH Client is listed.<br>
+  ![Optional Features](images/ssh/windows-step3.png)
+      * If it’s not, click the plus-sign next to Add a feature. <br>
+      * Scroll through the list to find and select OpenSSH Client.<br>
+      * Finally, click Install.
 
-4. Open Command Prompt.<br>
-![Command Prompt](images/ssh/windows-step4.png)
-    1) Press the Windows key.
-    2) Type `cmd`.
-    3) Under *Best Match*, right-click Command Prompt.
-    4) Click Run as Administrator
+  4. Open Command Prompt.
+      1) Press the Windows key.
+      2) Type `cmd`.
+      3) Under *Best Match*, right-click Command Prompt.
+      4) Click Run as Administrator
+      
+      ![Command Prompt](images/ssh/windows-step4.png)
 
-5. If prompted, click **Yes** in the *Do you want to allow this app to make changes to your device?* pop-up.
+  5. If prompted, click **Yes** in the *Do you want to allow this app to make changes to your device?* pop-up.
 
-6. Use OpenSSH to Generate an SSH Key Pair
-    1) In the command prompt, type the following:
-        ```sh
-        ssh-keygen
-        ```
-        ![SSH](images/ssh/windows-step6.png)
-    2) By default, the system will save the keys to C:\Users\your_username/.ssh/id_rsa. You can use the default name, or you can choose more descriptive names. This can help distinguish between keys, if you are using multiple key pairs. To stick to the default option, press Enter.
-    3) You’ll be asked to enter a passphrase. Hit Enter to skip this step.
-    4) The system will generate the key pair, and display the key fingerprint and a randomart image.
-    5) Open your file browser.
-    6) Navigate to C:\Users\your_username/.ssh.
-    7) You should see two files. The identification is saved in the id_rsa file and the public key is labeled id_rsa.pub. This is your SSH key pair.
+  6. Use OpenSSH to Generate an SSH Key Pair
+      1) In the command prompt, type the following:
+          ```sh
+          ssh-keygen
+          ```
+          ![SSH](images/ssh/windows-step6.png)
+      2) By default, the system will save the keys to C:\Users\your_username/.ssh/id_rsa. You can use the default name, or you can choose more descriptive names. This can help distinguish between keys, if you are using multiple key pairs. To stick to the default option, press Enter.
+      3) You’ll be asked to enter a passphrase. Hit Enter to skip this step.
+      4) The system will generate the key pair, and display the key fingerprint and a randomart image.
+      5) Open your file browser.
+      6) Navigate to C:\Users\your_username/.ssh.
+      7) You should see two files. The identification is saved in the id_rsa file and the public key is labeled id_rsa.pub. This is your SSH key pair.
 
-**Linux:**
+  **Linux:**
 
-**MacOS:**
+  **MacOS:**
 
-### Adding SSH Public Key
-Replace $SSH with the content of the public key.
-```sh
-echo "$SSH" >> ~/.ssh/authorized_keys
-```
-### SSH Permissions
-```sh
-mkdir -p ~/.ssh
-touch ~/.ssh/authorized_keys
-chmod 700 ~/.ssh
-chmod 600 ~/.ssh/authorized_keys
-```
-### Disabling password based SSH
-```sh
-cd /etc/ssh
-sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/g' sshd_config
-systemctl restart sshd
-```
-### Allow user to SUDO without password
+  ### Adding SSH Public Key
+  Replace $SSH with the content of the public key.
+  ```sh
+  echo "$SSH" >> ~/.ssh/authorized_keys
+  ```
+  ### SSH Permissions
+  ```sh
+  mkdir -p ~/.ssh
+  touch ~/.ssh/authorized_keys
+  chmod 700 ~/.ssh
+  chmod 600 ~/.ssh/authorized_keys
+  ```
+  ### Disabling password based SSH
+  ```sh
+  cd /etc/ssh
+  sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/g' sshd_config
+  systemctl restart sshd
+  ```
+  ### Allow user to SUDO without password
 
-```sh
-sudo su -
-visudo
-```
-Press `Insert` on keyboard, substitute `$USER` with the user you created during installation.
-```sh
-$USER  ALL=(ALL) NOPASSWD: ALL
-```
-### Working with fapolicyd
-fapolicyd starts in protection mode. We need to set fapolicyd to permissive mode to allow us to build the necessary rule sets for our individual systems.
-```sh
-cd /etc/fapolicyd/
-sed -i 's/permissive = 0/permissive = 1/g' fapolicyd.conf
-systemctl restart fapolicyd
-```
-See <a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/security_hardening/assembly_blocking-and-allowing-applications-using-fapolicyd_security-hardening">RHEL: Blocking and Allowing applications with fapolicyd</a> for more information on building rules.
+  ```sh
+  sudo su -
+  visudo
+  ```
+  Press `Insert` on keyboard, substitute `$USER` with the user you created during installation.
+  ```sh
+  $USER  ALL=(ALL) NOPASSWD: ALL
+  ```
+  ### Working with fapolicyd
+  fapolicyd starts in protection mode. We need to set fapolicyd to permissive mode to allow us to build the necessary rule sets for our individual systems.
+  ```sh
+  cd /etc/fapolicyd/
+  sed -i 's/permissive = 0/permissive = 1/g' fapolicyd.conf
+  systemctl restart fapolicyd
+  ```
+  See <a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/security_hardening/assembly_blocking-and-allowing-applications-using-fapolicyd_security-hardening">RHEL: Blocking and Allowing applications with fapolicyd</a> for more information on building rules.
 
-### Fixing wget
-As of current GnuTLS is not properly working with FIPS. To correct this we tell GnuTLS to disable health checks.
+  ### Fixing wget
+  As of current GnuTLS is not properly working with FIPS. To correct this we tell GnuTLS to disable health checks.
 
-```sh
-export GNUTLS_SKIP_FIPS_INTEGRITY_CHECKS=1
+  ```sh
+  export GNUTLS_SKIP_FIPS_INTEGRITY_CHECKS=1
 
-# Lets make is persistant
-cd /etc/profile.d/
-touch gnutls.sh
-echo "export GNUTLS_SKIP_FIPS_INTEGRITY_CHECKS=1" > gnutls.sh
-```
-`wget` will now function as intended.
-<p align="right">(<a href="#top">back to top</a>)</p>
+  # Lets make is persistant
+  cd /etc/profile.d/
+  touch gnutls.sh
+  echo "export GNUTLS_SKIP_FIPS_INTEGRITY_CHECKS=1" > gnutls.sh
+  ```
+  `wget` will now function as intended.
+  <p align="right">(<a href="#top">back to top</a>)</p>
 
-<!-- CLOUD -->
-## Optional Cloud Configurations:
-`cloud-init`: Cloud images are operating system templates and every instance starts out as an identical clone of every other instance. It is the user data that gives every cloud instance its personality and cloud-init is the tool that applies user data to your instances automatically.
-```sh
-dnf install -y cloud-init
-```
+  <!-- CLOUD -->
+  ## Optional Cloud Configurations:
+  `cloud-init`: Cloud images are operating system templates and every instance starts out as an identical clone of every other instance. It is the user data that gives every cloud instance its personality and cloud-init is the tool that applies user data to your instances automatically.
+  ```sh
+  dnf install -y cloud-init
+  ```
 
-`cloud-utils-growpart`: Provides the growpart script for growing a partition. It is primarily used in cloud images in conjunction with the dracut-modules-growroot package to grow the root partition on first boot.
-```sh
-dnf install -y cloud-utils-growpart
-```
-`gdisk`: GDISK command is used to partition the drives of your system. Works with cloud-init for partition resizing.
-```sh
-dnf install -y gdisk
-```
+  `cloud-utils-growpart`: Provides the growpart script for growing a partition. It is primarily used in cloud images in conjunction with the dracut-modules-growroot package to grow the root partition on first boot.
+  ```sh
+  dnf install -y cloud-utils-growpart
+  ```
+  `gdisk`: GDISK command is used to partition the drives of your system. Works with cloud-init for partition resizing.
+  ```sh
+  dnf install -y gdisk
+  ```
 
 <!-- LICENSE -->
 ## License:
