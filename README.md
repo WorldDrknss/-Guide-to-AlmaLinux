@@ -33,8 +33,8 @@
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
       </ul>
+    <li><a href="#installation">Installation</a></li>
     </li>
     <li>
       <a href="#hardening">Hardening</a>
@@ -155,27 +155,27 @@ Coming Soons
       * Finally, click Install.
 
   4. Open Command Prompt.
-      1) Press the Windows key.
-      2) Type `cmd`.
-      3) Under *Best Match*, right-click Command Prompt.
-      4) Click Run as Administrator
+      * Press the Windows key.
+      * Type `cmd`.
+      * Under *Best Match*, right-click Command Prompt.
+      * Click Run as Administrator
       
       ![Command Prompt](images/ssh/windows-step4.png)
 
   5. If prompted, click **Yes** in the *Do you want to allow this app to make changes to your device?* pop-up.
 
   6. Use OpenSSH to Generate an SSH Key Pair
-      1) In the command prompt, type the following:
+      * In the command prompt, type the following:
           ```sh
           ssh-keygen
           ```
           ![SSH](images/ssh/windows-step6.png)
-      2) By default, the system will save the keys to C:\Users\your_username/.ssh/id_rsa. You can use the default name, or you can choose more descriptive names. This can help distinguish between keys, if you are using multiple key pairs. To stick to the default option, press Enter.
-      3) You’ll be asked to enter a passphrase. Hit Enter to skip this step.
-      4) The system will generate the key pair, and display the key fingerprint and a randomart image.
-      5) Open your file browser.
-      6) Navigate to C:\Users\your_username/.ssh.
-      7) You should see two files. The identification is saved in the id_rsa file and the public key is labeled id_rsa.pub. This is your SSH key pair.
+      * By default, the system will save the keys to C:\Users\your_username/.ssh/id_rsa. You can use the default name, or you can choose more descriptive names. This can help distinguish between keys, if you are using multiple key pairs. To stick to the default option, press Enter.
+      * You’ll be asked to enter a passphrase. Hit Enter to skip this step.
+      * The system will generate the key pair, and display the key fingerprint and a randomart image.
+      * Open your file browser.
+      * Navigate to C:\Users\your_username/.ssh.
+      * You should see two files. The identification is saved in the id_rsa file and the public key is labeled id_rsa.pub. This is your SSH key pair.
 
   **Linux:**
 
