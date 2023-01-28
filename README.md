@@ -189,6 +189,9 @@ See <a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_li
 As of current GnuTLS is not properly working with FIPS. To correct this we tell GnuTLS to disable health checks.
 
 ```sh
+export GNUTLS_SKIP_FIPS_INTEGRITY_CHECKS=1
+
+# Lets make is persistant
 cd /etc/profile.d/
 touch gnutls.sh
 echo "export GNUTLS_SKIP_FIPS_INTEGRITY_CHECKS=1" > gnutls.sh
@@ -196,15 +199,31 @@ echo "export GNUTLS_SKIP_FIPS_INTEGRITY_CHECKS=1" > gnutls.sh
 `wget` will now function as intended.
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+<!-- CLOUD -->
+## Optional Cloud Configurations:
+`cloud-init`: Cloud images are operating system templates and every instance starts out as an identical clone of every other instance. It is the user data that gives every cloud instance its personality and cloud-init is the tool that applies user data to your instances automatically.
+```sh
+dnf install -y cloud-init
+```
+
+`cloud-utils-growpart`: Provides the growpart script for growing a partition. It is primarily used in cloud images in conjunction with the dracut-modules-growroot package to grow the root partition on first boot.
+```sh
+dnf install -y cloud-utils-growpart
+```
+`gdisk`: GDISK command is used to partition the drives of your system. Works with cloud-init for partition resizing.
+```sh
+dnf install -y gdisk
+```
+
 <!-- LICENSE -->
-## License
+## License:
 
 Distributed under the MIT License. See `LICENSE` for more information.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- CONTACT -->
-## Contact
+## Contact:
 
 Twitter - [@skynetinctech](https://twitter.com/skynetinctech)
 
