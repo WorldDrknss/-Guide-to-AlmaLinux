@@ -186,6 +186,8 @@ Coming Soons
   ```sh
   echo "$SSH" >> ~/.ssh/authorized_keys
   ```
+  <p align="right">(<a href="#top">back to top</a>)</p>
+  
   ### SSH Permissions
   ```sh
   mkdir -p ~/.ssh
@@ -193,22 +195,38 @@ Coming Soons
   chmod 700 ~/.ssh
   chmod 600 ~/.ssh/authorized_keys
   ```
+
+  <p align="right">(<a href="#top">back to top</a>)</p>
+  
   ### Disabling password based SSH
   ```sh
   cd /etc/ssh
   sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/g' sshd_config
   systemctl restart sshd
   ```
+<p align="right">(<a href="#top">back to top</a>)</p>
+
   ### Allow user to SUDO without password
 
   ```sh
   sudo su -
   visudo
   ```
+
   Press `Insert` on keyboard, substitute `$USER` with the user you created during installation.
   ```sh
   $USER  ALL=(ALL) NOPASSWD: ALL
   ```
+
+  Press `esc` then type
+  ```sh
+  :wq
+  ```
+
+  This will save and close the terminal.
+  
+<p align="right">(<a href="#top">back to top</a>)</p>
+
   ### Working with fapolicyd
   fapolicyd starts in protection mode. We need to set fapolicyd to permissive mode to allow us to build the necessary rule sets for our individual systems.
   ```sh
@@ -217,6 +235,8 @@ Coming Soons
   systemctl restart fapolicyd
   ```
   See <a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/security_hardening/assembly_blocking-and-allowing-applications-using-fapolicyd_security-hardening">RHEL: Blocking and Allowing applications with fapolicyd</a> for more information on building rules.
+
+  <p align="right">(<a href="#top">back to top</a>)</p>
 
   ### Fixing wget
   As of current GnuTLS is not properly working with FIPS. To correct this we tell GnuTLS to disable health checks.
@@ -230,6 +250,7 @@ Coming Soons
   echo "export GNUTLS_SKIP_FIPS_INTEGRITY_CHECKS=1" > gnutls.sh
   ```
   `wget` will now function as intended.
+
   <p align="right">(<a href="#top">back to top</a>)</p>
 
   <!-- CLOUD -->
