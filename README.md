@@ -88,12 +88,7 @@ Proof of concept e-commerce store using Angular, .Net Core and Stripe for paymen
 
 <!-- GETTING STARTED -->
 ## Getting Started
-
-To get a local copy up and running follow these simple example steps.
-
 ### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
 
 1. Downloading AlmaLinux
     ```sh
@@ -134,7 +129,28 @@ This is an example of how to list things you need to use the software and how to
       More details and information about AlmaLinux Live Media can be found on Live Media SIG.
 
 ## Installation
-Coming Soons
+  1. When starting up AlmaLinux for the first time you will be granted with a welcome screen. Here select your language and keyboard type. Click **Continue**
+  ![Start Screen](images/startsceen.PNG)
+  2. Begin Installation:
+![Begin Installation](images/begin_installation.PNG)
+  3. Select User Creation: Create a user and assign that user a strong password. Make sure both `Make this user administrator` and `Require a password to use this account` are checked. Click **Done**
+![User Creation](images/create_user.PNG)
+  4. Software Selection: For this instance we will select Minimal Install. Click **Done**
+![Software Selection](images/software_selection.PNG)
+  5. Security Profile: We will highlight DISA STIG and click on `Select profile` It will issue some errors, you can disregard them as we will correct it in the next section. Click **Done**
+  ![Security Profiles](images/security_profiles.PNG)
+  6. Installation Destination: For `Storage Configuation` select `Custom`. Click **Done** This will bring you to the manual partitioning page.
+![Installation Destination](images/installation_destination.PNG)
+  7. Manual Partitioning: Add all the following `DATA` and `SYSTEM` mount points.
+![Manual Partitioning](images/Manual_Partitioning.PNG)
+  8. Click on `Modify` under `Volume Group` and select "As large as possible" for `Size policy`. Click **Save** then click **Done**
+![Volume Group](images/volume_group_modify.PNG)
+  9. Accept Partitioning Changes: Click on **Accept Changes**
+![Accept Partition](images/accept_changes.PNG)
+ 10. Begin Installation: Click on **Begin Installation** to start installing AlmaLinux.
+![Alt text](images/begin_installation.PNG)
+
+**Congratulations you have installed AlmaLinux**
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
