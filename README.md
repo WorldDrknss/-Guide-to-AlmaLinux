@@ -60,7 +60,7 @@
 ## About The Project
 
 [![Product Name Screen Shot][product-screenshot]](https://almalinux.org)
-Proof of concept e-commerce store using Angular, .Net Core and Stripe for payment processing
+AlmaLinux Desktop GUI
 
 * Installation of AlmaLinux
 * Utilizing DISA STIG Profiles
