@@ -195,7 +195,15 @@ Proof of concept e-commerce store using Angular, .Net Core and Stripe for paymen
 
   **Linux:**
 
+  In your preferred terminal run the command `ssh-keygen`
+  * By default, the system will save the keys to `~/.ssh`.
+  * You should see two files. The identification is saved in the id_rsa file and the public key is labeled id_rsa.pub. This is your SSH key pair.
+
   **MacOS:**
+
+  In Terminal run the command `ssh-keygen`
+  * By default, the system will save the keys to `/Users/myname/.ssh`.
+  * You should see two files. The identification is saved in the id_rsa file and the public key is labeled id_rsa.pub. This is your SSH key pair.
 
   ### SSH Permissions
   ```sh
